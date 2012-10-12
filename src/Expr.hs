@@ -34,41 +34,32 @@ type Env = [(Id,Int)]
 empty :: Env
 empty = []
 
+-- "Update" an environment with a new binding.
+extend :: Env -> Id -> Int -> Env
+extend env k n = undefined
+
 -- Given an environment and a variable name, return the value that is assigned
 -- to that name in the environment. If the variable name is unbound, return
 -- Nothing.
 lookup :: Id -> Env -> Maybe Int
-lookup _ []                    = Nothing
-lookup k ((x,n):_) | k == x    = Just n
-lookup k (_:env)   | otherwise = lookup k env
-
--- "Update" an environment with a new binding.
-extend :: Env -> Id -> Int -> Env
-extend env k n = (k,n):env
+lookup k env = undefined
 
 -- Given an environment and an expression, evaluate the expression (i.e., 
 -- reduce the expression to an integer value).
 evalExpr :: Env -> Expr -> Int
-evalExpr _ (Num n) = n
-evalExpr env (Var x) = 
-  case lookup x env of
-    Just n -> n
-    Nothing -> 0
-evalExpr env (Op o e1 e2) = (evalExpr env e1) `op` (evalExpr env e2)
-  where op = evalOp o
+evalExpr = undefined
 
 -- Given an environment and a statement, return a new environment that extends 
 -- the old one by performing the assignment described by the statement.
 evalStmt :: Env -> Stmt -> Env
-evalStmt env (Assign x e) = insert env x n
-  where n = evalExpr env e
+evalStmt = undefined
 
 -- Given a sequence of assignment statements, evaluate them in left-to-right 
 -- order, updating the environment as you go. Return the final environment.
 evalProg :: Prog -> Env
-evalProg p = foldl evalStmt empty p
+evalProg = undefined
 
 -- Evaluate the program as before, but instead of returning the final 
 -- environment, return the value bound by the final assignment.
 evalProgFinal :: Prog -> Int
-evalProgFinal p = snd (head (evalProg p))
+evalProgFinal = undefined
