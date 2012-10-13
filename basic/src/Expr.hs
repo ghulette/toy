@@ -28,21 +28,21 @@ data Stmt = Assign Id Expr   -- Assignment to a variable
 type Prog = [Stmt]
 
 -- An environment is used to keep track of the current value of each variable.
-type Env = [(Id,Int)]
+type Env = Id -> Maybe Int
 
 -- Empty environment (no variables assigned)
 empty :: Env
-empty = []
+empty = const Nothing
 
 -- "Update" an environment with a new binding.
 extend :: Env -> Id -> Int -> Env
-extend env k n = undefined
+extend env k n = \x -> if x == k then Just n else env k
 
 -- Given an environment and a variable name, return the value that is assigned
 -- to that name in the environment. If the variable name is unbound, return
 -- Nothing.
 lookup :: Id -> Env -> Maybe Int
-lookup k env = undefined
+lookup k env = env k
 
 -- Given an environment and an expression, evaluate the expression (i.e., 
 -- reduce the expression to an integer value).
