@@ -1,0 +1,5 @@
+# Should be 21
+x = 1 + 2;
+y = 3 + x;
+z = x * y + 1;
+print z;

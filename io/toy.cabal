@@ -1,0 +1,12 @@
+Name:           Toy
+Version:        0.1
+Cabal-Version:  >= 1.2
+Build-Type:     Simple
+  
+Executable toy
+  Main-Is:        Main.hs
+  Other-modules:  Token, Parser
+  Hs-Source-Dirs: src
+  Build-Depends:  base >= 4,containers,mtl,array
+  Build-Tools:    alex, happy
+  GHC-Options:    -O2 -Wall
